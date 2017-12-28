@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+system('git add -u')
+system("git commit --amend --no-edit")
+system("git push --force origin HEAD")
