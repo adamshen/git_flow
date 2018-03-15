@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+commits = (Dir.entries('.') - %w(. .. .DS_Store)).each_with_object("") do |entry, output|
+  path = "./#{entry}"
+  next unless File.directory?(path)
+  output << "=============#{entry}===============\n"
+  output << `cd #{path} && git log --since="6am"`
+  output << "\n\n\n"
+end
+
+puts commits
