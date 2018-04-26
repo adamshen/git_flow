@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-system("git add -u")
-
 commit_comment = case ARGV.length
                    when 1
                      ARGV[0]
@@ -11,6 +9,6 @@ commit_comment = case ARGV.length
                      nil
                  end
 
-current_branch = `git rev-parse --abbrev-ref HEAD`
+current_branch = `git rev-parse --abbrev-ref HEAD`.chomp
 current_dir = `pwd`.split('/').last.chomp
-system(%(git commit -m '#{current_dir}(#{current_branch.chomp}): #{commit_comment}'))
+system(%(git commit -m '#{current_dir}(#{current_branch}): #{commit_comment}'))
