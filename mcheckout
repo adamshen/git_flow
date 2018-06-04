@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+current_branch = `git rev-parse --abbrev-ref HEAD`.chomp
+system('git checkout master') unless current_branch == 'master'
+system('git pull origin master')
+system("git checkout -b #{ARGV[0]}")
+
