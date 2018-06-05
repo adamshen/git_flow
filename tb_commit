@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 current_branch = `git rev-parse --abbrev-ref HEAD`
-system(%(git commit -m 'feat(#{current_branch.chomp}): #{ARGV[1]} --IS-#{ARGV[0]}'))
+system(%(git commit -m 'feat(#{current_branch.chomp}): #{ARGV[1]} #IS-#{ARGV[0]}'))
