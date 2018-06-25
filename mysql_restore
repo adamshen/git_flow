@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'dotenv/load'
+
+`mysql -u #{ENV['DB_USERNAME']} --password=#{ENV['DB_PASSWORD']} -e 'drop database if exists #{ENV['DB_NAME']}'`
+`mysql -u #{ENV['DB_USERNAME']} --password=#{ENV['DB_PASSWORD']} < #{ARGV[0]}`

@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'dotenv/load'
+
+current_branch = `git rev-parse --abbrev-ref HEAD`.chomp
+file_name = "#{current_branch}_#{Time.now.strftime("%Y%m%d")}.sql"
+`mysqldump --add-drop-database --databases #{ENV['DB_NAME']} -u #{ENV['DB_USERNAME']} --password=#{ENV['DB_PASSWORD']} > #{file_name}`
