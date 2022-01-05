@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 dir = ENV["WORK_DIR"] || '.'
-system(%(grep -Rrn --include="*.rb" --include="*.yml" --include="*.erb" --include="*.js" --color "#{ARGV[0]}" #{dir}))
+system(%(grep -Rrn --include="*.js" --include="*.rb" --include="*.yml" --include="*.erb" --include="*.jbuilder" --include="*.axlsx" --color "#{ARGV[0]}" #{dir}))

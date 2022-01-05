@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'sidekiq/api'
+Sidekiq.redis(&:flushdb)
