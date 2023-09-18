@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    echo "Error: This script must be run inside a git repository."
+    exit 1
+fi
+
+last_commit=$(git log -1 --pretty=%B)
+prefix_message=$(echo "$last_commit" | awk -F ':' '{print $1}')
+
+review_number=$(pbpaste)
+
+if [ -z "$review_number" ]; then
+    echo "Please copy a review number to your clipboard."
+    exit 1
+fi
+
+commit_message="$prefix_message: improve by code review $review_number"
+git commit -m "$commit_message"
